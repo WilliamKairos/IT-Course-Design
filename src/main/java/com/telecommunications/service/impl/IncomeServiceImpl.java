@@ -64,6 +64,22 @@ public class IncomeServiceImpl implements IncomeService {
     }
 
     @Override
+    public <T> int deleteIncomeById(T income, int id) {
+
+        if (income instanceof BillingIncome) {
+            return billingIncomeMapper.delete(id);
+        } else if (income instanceof CardSalesIncome) {
+            return cardSalesIncomeMapper.delete(id);
+        } else if (income instanceof IntercompanySettlementIncome) {
+            return intercompanySettlementIncomeMapper.delete(id);
+        } else if (income instanceof NotificationIncome) {
+            return notificationIncomeMapper.delete(id);
+        } else if (income instanceof PrepaidConversionIncome) {
+            return prepaidConversionIncomeMapper.delete(id);
+        }
+        return -1;
+    }
+    @Override
     public <T> int updateIncome(T income) {
 
         if (income instanceof BillingIncome) {

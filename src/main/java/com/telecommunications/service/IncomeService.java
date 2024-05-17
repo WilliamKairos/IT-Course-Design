@@ -8,6 +8,8 @@ public interface IncomeService {
 
     <T> int deleteIncome(T income);
 
+    <T> int deleteIncomeById(T income, int id);
+
     <T> int updateIncome(T income);
 
     <T> int updateAuditStatus(T income);

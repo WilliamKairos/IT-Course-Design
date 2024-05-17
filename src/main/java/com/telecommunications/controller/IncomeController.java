@@ -22,6 +22,7 @@ public class IncomeController {
 
     @PostMapping("/data_entry/add/billing")
     public ResponseEntity<Result> DataEntryAddBilling(@RequestBody BillingIncome billingIncome){
+        System.out.println(billingIncome);
         int flag = incomeService.addIncome(billingIncome);
         if (flag == -1){
             return new ResponseEntity<>(new Result(400, "出现错误！", null), HttpStatus.BAD_REQUEST);
@@ -81,7 +82,7 @@ public class IncomeController {
     };
 
 
-    @PostMapping("/data_entry/addBatch/billing")
+    @PostMapping(" ")
     public ResponseEntity<Result> DataEntryAddBatchBilling(@RequestBody List<BillingIncome> billingIncomeList){
         System.out.println(billingIncomeList);
         int flag = incomeService.addBatch(billingIncomeList, BillingIncome.class);
@@ -105,6 +106,19 @@ public class IncomeController {
             return new ResponseEntity<>(new Result(200, "删除成功", billingIncome), HttpStatus.OK);
         }
     };
+//    @DeleteMapping("/data_entry/delete/billing/{id}")
+//    public ResponseEntity<Result> DataEntryDeleteBilling(@PathVariable int id){
+//        System.out.println(id);
+//    //    int flag = incomeService.deleteIncome(billingIncome);
+//        int flag = incomeService.deleteIncomeById(new BillingIncome() ,id);
+//        if (flag == -1){
+//            return new ResponseEntity<>(new Result(400, "出现错误！", null), HttpStatus.BAD_REQUEST);
+//        }else if (flag == 0){
+//            return new ResponseEntity<>(new Result(401, "删除失败, 请重新检查数据", null), HttpStatus.NOT_FOUND);
+//        }else {
+//            return new ResponseEntity<>(new Result(200, "删除成功", null), HttpStatus.OK);
+//        }
+//    };
 
     @DeleteMapping("/data_entry/delete/card_sales")
     public ResponseEntity<Result> DataEntryDeleteCardSales(@RequestBody CardSalesIncome cardSalesIncome){
