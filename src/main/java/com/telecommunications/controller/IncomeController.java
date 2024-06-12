@@ -82,7 +82,7 @@ public class IncomeController {
     };
 
 
-    @PostMapping(" ")
+    @PostMapping("/data_entry/addBatch/billing")
     public ResponseEntity<Result> DataEntryAddBatchBilling(@RequestBody List<BillingIncome> billingIncomeList){
         System.out.println(billingIncomeList);
         int flag = incomeService.addBatch(billingIncomeList, BillingIncome.class);
